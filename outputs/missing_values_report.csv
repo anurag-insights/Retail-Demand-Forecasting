@@ -1,0 +1,13 @@
+,Missing_Count,Missing_Percentage
+Weather,4,2.0
+Inventory_Level,4,2.0
+Units_Sold,4,2.0
+Unit_Price_NPR,3,1.5
+Promotion,3,1.5
+Discount_Pct,2,1.0
+Is_Holiday,1,0.5
+Date,0,0.0
+Product_Category,0,0.0
+Product_ID,0,0.0
+Store_ID,0,0.0
+Day_of_Week,0,0.0
