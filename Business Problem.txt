@@ -1,0 +1,60 @@
+Evergreen Mart – Retail Demand Forecasting
+
+Evergreen Mart is a retail business selling beverages and other grocery products.
+
+The problem:
+
+The company currently estimates product demand using previous sales records and employees' assumptions.
+
+This creates two major problems:
+
+1. Overstocking
+
+The company purchases more products than customers actually need. Unsold products occupy storage space and increase inventory costs.
+
+
+2. Stock-outs
+
+The company sometimes runs out of products during weekends, promotions, or periods of higher demand, resulting in lost sales.
+
+
+
+The business objective:
+
+Develop a time-series forecasting system that predicts future product demand using historical sales, calendar variables, promotions, pricing, and other relevant factors.
+
+The company wants to use these predictions to make better purchasing and inventory decisions.
+
+
+
+
+
+
+How will we solve this problem?
+
+Our project will follow this workflow:
+1. Data Collection
+   Obtain historical retail sales data.
+
+2. Data Quality Assessment
+   Identify missing values, incorrect entries, duplicates, inconsistent formats, and outliers.
+
+3. Data Cleaning
+   Handle missing values, correct inconsistent data, and investigate inaccurate records.
+
+4. Exploratory Data Analysis
+   Identify trends, seasonality, weekly patterns, and demand fluctuations.
+
+5. Feature Engineering
+   Create lag features, rolling averages, calendar variables, and other useful predictors.
+
+6. Model Development
+   Build and compare forecasting models.
+
+7. Model Evaluation
+   Compare MAE, RMSE, and WAPE.
+
+8. Business Recommendations
+   Translate forecasts into inventory-planning recommendations.
+
+
