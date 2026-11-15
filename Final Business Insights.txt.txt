@@ -1,0 +1,49 @@
+ Final Business Insights — Retail Demand Forecasting
+
+ 1. Business Problem
+Evergreen Mart faces difficulties planning inventory because demand is estimated using intuition and recent sales. This can contribute to overstocking and stock-outs.
+
+2. Project Objective
+The objective was to develop a machine learning-based approach to forecast daily product demand using historical sales and relevant business information.
+
+ 3. Exploratory Data Analysis Findings
+- Daily sales distribution: [Insert your finding]
+- Weekly sales patterns: [Insert your finding]
+- Monthly sales patterns: [Insert your finding]
+- Promotion and sales relationship: [Insert your finding]
+- Price and sales relationship: [Insert your finding]
+- Inventory and sales relationship: [Insert your finding]
+
+ 4. Models Developed
+- Linear Regression
+- Random Forest Regressor
+- Gradient Boosting Regressor
+- Naive Baseline
+
+5. Model Evaluation
+Best-performing model: [Insert model name]
+
+MAE: [Insert result]
+
+RMSE: [Insert result]
+
+WAPE: [Insert result]
+
+Forecast Bias: [Insert result]
+
+ 6. Business Recommendations
+
+ 7. Project Limitations
+- The dataset represents one store and one product.
+- The dataset contains approximately 200 daily observations.
+- The dataset is synthetic and does not represent actual retail transactions.
+- Forecast accuracy may differ when applied to real-world retail operations.
+
+ 8. Future Improvements
+- Include multiple stores and products.
+- Use a larger real-world dataset.
+- Test additional forecasting algorithms.
+- Incorporate holidays, seasonal events and promotion calendars.
+- Evaluate the impact of forecasts on inventory costs and stock-out rates.
+
+
