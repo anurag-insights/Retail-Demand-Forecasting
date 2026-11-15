@@ -84,11 +84,25 @@ Retail Demand Forecasting/
 │   └── retail_demand_forecasting_raw_data.xlsx
 │
 ├── notebooks/
+│   ├── 01_Data_Quality_Assessment.ipynb
+│   ├── 02_Exploratory_Data_Analysis.ipynb
+│   ├── 03_Feature_Engineering.ipynb
+│   ├── 04_Model_Development.ipynb
+│   ├── 05_Model_Evaluation.ipynb
+│   └── 06_Final_Project_Summary.ipynb
 │
 ├── outputs/
+│   ├── eda/
+│   ├── retail_demand_forecasting_cleaned.csv
+│   ├── retail_demand_forecasting_featured.csv
+│   ├── model_evaluation_results.csv
+│   ├── actual_vs_predicted.csv
+│   ├── final_evaluation_summary.csv
+│   ├── detailed_prediction_errors.csv
+│   └── weekday_error_analysis.csv
 │
 ├── Business Problem.txt
-│
+├── Final Business Insights.txt
 └── README.md
 ```
 
