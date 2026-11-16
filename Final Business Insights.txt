@@ -1,49 +1,363 @@
- Final Business Insights — Retail Demand Forecasting
+# FINAL BUSINESS INSIGHTS
+## Retail Demand Forecasting — Evergreen Mart
 
- 1. Business Problem
-Evergreen Mart faces difficulties planning inventory because demand is estimated using intuition and recent sales. This can contribute to overstocking and stock-outs.
+---
 
-2. Project Objective
-The objective was to develop a machine learning-based approach to forecast daily product demand using historical sales and relevant business information.
+## 1. Project Overview
 
- 3. Exploratory Data Analysis Findings
-- Daily sales distribution: [Insert your finding]
-- Weekly sales patterns: [Insert your finding]
-- Monthly sales patterns: [Insert your finding]
-- Promotion and sales relationship: [Insert your finding]
-- Price and sales relationship: [Insert your finding]
-- Inventory and sales relationship: [Insert your finding]
+This project focuses on developing a machine learning-based retail demand forecasting system for a fictional retail business named Evergreen Mart.
 
- 4. Models Developed
-- Linear Regression
-- Random Forest Regressor
-- Gradient Boosting Regressor
-- Naive Baseline
+The objective is to analyze historical daily sales data and build predictive models that can estimate future product demand.
 
-5. Model Evaluation
-Best-performing model: [Insert model name]
+Accurate demand forecasting can help retail businesses make better inventory decisions, reduce the risk of overstocking and stockouts, and improve operational planning.
 
-MAE: [Insert result]
+This project uses a synthetic dataset representing one retail store and one beverage product.
 
-RMSE: [Insert result]
+---
 
-WAPE: [Insert result]
+## 2. Business Problem
 
-Forecast Bias: [Insert result]
+Retail businesses often face challenges when estimating how much inventory they need to meet future customer demand.
 
- 6. Business Recommendations
+Ordering too much inventory can increase storage costs and lead to unsold products, while ordering too little can result in stockouts and missed sales opportunities.
 
- 7. Project Limitations
-- The dataset represents one store and one product.
-- The dataset contains approximately 200 daily observations.
-- The dataset is synthetic and does not represent actual retail transactions.
-- Forecast accuracy may differ when applied to real-world retail operations.
+Evergreen Mart needs a reliable way to estimate daily product demand using historical sales information and other relevant factors.
 
- 8. Future Improvements
-- Include multiple stores and products.
-- Use a larger real-world dataset.
-- Test additional forecasting algorithms.
-- Incorporate holidays, seasonal events and promotion calendars.
-- Evaluate the impact of forecasts on inventory costs and stock-out rates.
+The main business problem is:
 
+**How can Evergreen Mart use historical sales data and machine learning techniques to predict daily product demand and support better inventory planning?**
 
+---
+
+## 3. Project Objectives
+
+The primary objectives of this project were:
+
+- Analyze historical retail sales data.
+- Identify and handle data quality issues.
+- Explore sales patterns and relationships between variables.
+- Create meaningful features for demand forecasting.
+- Develop multiple machine learning models.
+- Evaluate model performance using appropriate regression metrics.
+- Identify the best-performing forecasting model.
+- Provide practical recommendations for inventory planning.
+
+---
+
+## 4. Dataset Overview
+
+The project uses a synthetic retail dataset containing approximately 200 daily observations and 12 original columns.
+
+The dataset represents one store and one beverage product.
+
+Important variables include:
+
+- Date
+- Store_ID
+- Product_ID
+- Product_Category
+- Units_Sold
+- Unit_Price_NPR
+- Discount_Pct
+- Promotion
+- Day_of_Week
+- Is_Holiday
+- Inventory_Level
+- Weather
+
+The dataset intentionally contains several data quality issues to simulate challenges commonly encountered in real-world retail data.
+
+These include missing values, inconsistent labels, mixed date formats, duplicate dates, invalid numerical values, and unusual sales observations.
+
+**Note:** The dataset is synthetic and does not represent actual sales records from a real business.
+
+---
+
+## 5. Data Cleaning and Preprocessing
+
+The raw dataset was inspected and cleaned before performing exploratory analysis and model development.
+
+The following preprocessing activities were performed:
+
+- Inspected dataset structure, data types, and missing values.
+- Converted numerical columns into appropriate numerical data types.
+- Standardized inconsistent categorical values.
+- Converted date values into a consistent datetime format.
+- Inspected and handled duplicate records and dates.
+- Identified invalid numerical values.
+- Checked sales, prices, discounts, inventory levels, and holiday indicators for invalid values.
+- Handled missing explanatory variables using appropriate preprocessing techniques.
+- Preserved missing target values instead of blindly imputing sales.
+
+After cleaning, the dataset contained 6 missing values in the Units_Sold target column and 0 negative sales values.
+
+Rows with missing target values were excluded from supervised model training and evaluation because actual sales values are required to calculate forecasting errors.
+
+The cleaned dataset was saved for subsequent analysis.
+
+---
+
+## 6. Exploratory Data Analysis (EDA)
+
+Exploratory Data Analysis was performed to understand the structure and behavior of the retail sales data.
+
+The following analyses and visualizations were created:
+
+1. Distribution of daily sales.
+2. Sales outlier analysis.
+3. Daily sales trend.
+4. Seven-day moving average of sales.
+5. Average sales by weekday.
+6. Average sales by month.
+7. Promotion versus sales analysis.
+8. Relationship between unit price and sales.
+9. Relationship between inventory level and sales.
+10. Correlation analysis of numerical variables.
+
+These visualizations helped examine sales distributions, time-based patterns, promotional activity, pricing, inventory levels, and relationships among numerical variables.
+
+The EDA findings provide a foundation for feature engineering and model development.
+
+**Important limitation:** The dataset covers a relatively short period. Therefore, the analysis should not be treated as sufficient evidence of long-term annual seasonality or recurring yearly demand patterns.
+
+---
+
+## 7. Feature Engineering
+
+Feature engineering was performed to create additional variables that could help machine learning models identify useful patterns in historical sales data.
+
+### Calendar Features
+
+The following calendar-based features were created:
+
+- Year
+- Month
+- Day
+- Day_of_Week_Number
+- Is_Weekend
+- Week_of_Year
+
+These features allow the models to consider differences in demand associated with dates and calendar patterns.
+
+### Lag Features
+
+Historical sales values were used to create lag features:
+
+- Sales_Lag_1
+- Sales_Lag_7
+- Sales_Lag_14
+
+These features represent sales from one, seven, and fourteen days earlier.
+
+### Rolling Features
+
+The following rolling averages were created:
+
+- Rolling_Mean_7
+- Rolling_Mean_14
+
+These features represent recent historical sales averages over seven-day and fourteen-day windows.
+
+A one-period shift was applied before calculating rolling averages to ensure that the current day's sales were not used to predict that same day's demand.
+
+The engineered dataset was saved for model development.
+
+---
+
+## 8. Model Development
+
+Four forecasting approaches were evaluated in this project.
+
+### 1. Linear Regression
+
+Linear Regression was used as an initial machine learning model to establish a basic relationship between input features and daily sales.
+
+### 2. Random Forest Regressor
+
+Random Forest was used to capture potentially complex relationships between sales and the available input features.
+
+### 3. Gradient Boosting Regressor
+
+Gradient Boosting was used as an ensemble learning approach that builds models sequentially to improve predictive performance.
+
+### 4. Naive Baseline
+
+A simple baseline model was created using the previous day's sales as the prediction for the current day.
+
+This baseline provides a reference point to determine whether the machine learning models offer an improvement over a simple forecasting approach.
+
+### Training and Testing Strategy
+
+The dataset was divided chronologically:
+
+- 80% for training.
+- 20% for testing.
+
+A chronological split was used instead of a random split because the project involves time-series forecasting.
+
+The test data represents later observations than the training data.
+
+Categorical and numerical variables were processed using appropriate preprocessing pipelines.
+
+---
+
+## 9. Model Performance Evaluation
+
+The models were evaluated using three regression metrics:
+
+- **MAE (Mean Absolute Error):** Measures the average absolute difference between actual and predicted sales.
+- **RMSE (Root Mean Squared Error):** Measures prediction error while giving greater weight to larger errors.
+- **WAPE (Weighted Absolute Percentage Error):** Measures total absolute prediction error relative to total actual sales.
+
+### Model Comparison Results
+
+| Model | MAE | RMSE | WAPE |
+|---|---:|---:|---:|
+| Gradient Boosting | 7.74 | 9.29 | 16.56% |
+| Random Forest | 9.83 | 18.32 | 21.02% |
+| Linear Regression | 75.99 | 118.28 | 162.56% |
+| Naive Baseline | 8.53 | 10.17 | 18.29% |
+
+### Best-Performing Model: Gradient Boosting
+
+Gradient Boosting achieved the best overall results among the evaluated approaches.
+
+Its performance was:
+
+- MAE: 7.74 units
+- RMSE: 9.29 units
+- WAPE: 16.56%
+
+This means that its predictions differed from actual daily sales by approximately 7.74 units on average.
+
+Gradient Boosting also outperformed the Naive Baseline.
+
+The Naive Baseline achieved an MAE of 8.53, while Gradient Boosting achieved an MAE of 7.74.
+
+This represents an approximately 9.2% reduction in MAE compared with the Naive Baseline.
+
+Random Forest also performed better than Linear Regression, while Linear Regression recorded substantially higher errors than the other approaches.
+
+Based on these evaluation results, **Gradient Boosting was selected as the best-performing machine learning model for this project.**
+
+---
+
+## 10. Business Insights and Recommendations
+
+Based on the forecasting objective and model evaluation results, the following recommendations could help Evergreen Mart use demand forecasting in its inventory planning process.
+
+### 1. Use Forecasts to Support Inventory Planning
+
+Evergreen Mart can use predicted daily demand as an additional input when planning future inventory requirements.
+
+Forecasts should be considered alongside current inventory, supplier lead times, and expected customer demand.
+
+### 2. Monitor Actual Sales Against Predicted Sales
+
+The business should regularly compare actual sales with predicted sales.
+
+Monitoring these differences can help identify periods when the forecasting model performs poorly and may require further improvement.
+
+### 3. Review Promotional Activities
+
+Promotions and discounts may influence customer purchasing behavior.
+
+The business should continue monitoring promotional periods and collect more historical promotional data to understand their relationship with demand.
+
+### 4. Monitor Inventory Levels
+
+Inventory information should be considered when making replenishment decisions.
+
+However, inventory availability and actual customer demand are not always the same. Low inventory can restrict sales, meaning recorded sales may underestimate true customer demand.
+
+### 5. Improve the Forecasting System Over Time
+
+The forecasting model should be evaluated regularly using new sales observations.
+
+As more historical data becomes available, the business can retrain models and compare their performance to determine whether forecasting accuracy improves.
+
+**Note:** These recommendations describe potential business applications. This project has not measured actual reductions in inventory costs, stockouts, or product wastage.
+
+---
+
+## 11. Project Limitations
+
+Although the project demonstrates a complete retail demand forecasting workflow, it has several limitations.
+
+1. **Synthetic Dataset:** The dataset is artificially generated and does not represent actual retail transactions.
+
+2. **Limited Observations:** Approximately 200 observations are not sufficient to establish reliable long-term demand patterns.
+
+3. **Single Store:** The project considers only one fictional retail store.
+
+4. **Single Product:** The analysis focuses on one beverage product rather than multiple product categories.
+
+5. **Limited Historical Period:** The available data does not provide enough history to establish annual seasonality or long-term trends.
+
+6. **Model Generalization:** Good performance on this test dataset does not guarantee similar performance on real-world retail data.
+
+7. **Inventory Constraints:** The dataset does not provide a complete record of stockouts, supplier lead times, or lost sales. Therefore, actual unmet customer demand cannot be measured reliably.
+
+8. **Forecasting Scope:** The evaluation focuses on the available test observations and does not establish performance across multiple stores or products.
+
+---
+
+## 12. Future Improvements
+
+The project could be improved further through the following developments:
+
+- Use real-world retail transaction data.
+- Expand the dataset to include multiple stores and products.
+- Collect more historical sales observations.
+- Include supplier lead times and stockout information.
+- Improve promotional and holiday data.
+- Experiment with additional forecasting approaches such as XGBoost and time-series models.
+- Perform hyperparameter tuning.
+- Use rolling or walk-forward validation to evaluate forecasting performance across multiple time periods.
+- Develop an interactive Power BI dashboard.
+- Build a forecasting application that allows users to view future demand predictions.
+- Evaluate inventory-related costs and service levels using realistic business data.
+
+---
+
+## 13. Final Conclusion
+
+This project demonstrates an end-to-end machine learning workflow for retail demand forecasting.
+
+It covered data quality assessment, data cleaning, exploratory data analysis, feature engineering, model development, and model evaluation.
+
+Four forecasting approaches were compared: Linear Regression, Random Forest, Gradient Boosting, and a Naive Baseline.
+
+Among these approaches, Gradient Boosting achieved the best performance, with an MAE of 7.74, RMSE of 9.29, and WAPE of 16.56%.
+
+It also improved upon the Naive Baseline by reducing MAE by approximately 9.2%.
+
+The project demonstrates how historical sales patterns and additional business-related features can be used to build a machine learning model for daily demand prediction.
+
+Although the results are based on a small synthetic dataset, the project provides a foundation for developing more advanced retail forecasting systems using larger and more realistic business datasets.
+
+**Final Selected Model: Gradient Boosting Regressor**
+
+**Project Status: Completed — Initial Retail Demand Forecasting Model Developed and Evaluated**
+
+---
+
+## 14. Technologies and Libraries Used
+
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- Scikit-learn
+- Jupyter Notebook
+- Microsoft Excel
+- Git and GitHub
+
+---
+
+**Project:** Retail Demand Forecasting  
+**Business Case:** Evergreen Mart  
+**Project Type:** Machine Learning / Data Science  
+**Forecasting Task:** Daily Retail Sales Prediction  
+**Selected Model:** Gradient Boosting Regressor
